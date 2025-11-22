@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinchiao Lin - Product Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      
+      /* Custom Cat Cursor - Default (Paw) */
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+        /* White Paw Print */
+        cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><filter id="s" x="0" y="0" width="24" height="24"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.3"/></filter><g filter="url(%23s)"><circle cx="5" cy="8" r="2.5" fill="white"/><circle cx="12" cy="4" r="3" fill="white"/><circle cx="19" cy="8" r="2.5" fill="white"/><path d="M12 11C7.5 11 4.5 14 4.5 17C4.5 20 7.5 22 12 22C16.5 22 19.5 20 19.5 17C19.5 14 16.5 11 12 11Z" fill="white"/></g></svg>') 12 12, auto;
+      }
+
+      /* Interactive elements cursor - Pointer (Purple Cat Face) */
+      a, button, [role="button"], input, select, textarea, .cursor-pointer {
+        /* Purple Cat Face with Ears */
+        cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><filter id="s" x="0" y="0" width="24" height="24"><feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.3"/></filter><g filter="url(%23s)"><path d="M4 4L6.5 9.5C5 11.5 5 14.5 6.5 17C8 20 16 20 17.5 17C19 14.5 19 11.5 17.5 9.5L20 4L15.5 5.5C14 4.5 10 4.5 8.5 5.5L4 4Z" fill="%23a855f7" stroke="white" stroke-width="1"/><circle cx="9" cy="12" r="1.5" fill="white"/><circle cx="15" cy="12" r="1.5" fill="white"/></g></svg>') 12 12, pointer;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Background Blob Animation */
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+
+      /* Floating Animation */
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+
+      /* Glassmorphism Utilities */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+        transform: translateY(-4px);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
