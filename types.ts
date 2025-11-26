@@ -34,6 +34,10 @@ export interface Project {
   stack: string[];
   image: string;
   icon: ReactNode;
+  link?: string;
+  hasCaseStudy?: boolean;
+  embedUrl?: string;
+  facebookVideoUrl?: string;
 }
 
 export interface Experience {

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Cat, Mail, X } from 'lucide-react';
 import Navbar from './components/Navbar';
@@ -5,6 +6,7 @@ import HomeView from './components/HomeView';
 import AboutView from './components/AboutView';
 import ProjectView from './components/ProjectView';
 import ResumeView from './components/ResumeView';
+import CaseStudyView from './components/CaseStudyView';
 import ProjectModal from './components/ProjectModal';
 import ImageLightbox from './components/ImageLightbox';
 import ChatWidget from './components/ChatWidget';
@@ -23,12 +25,28 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
+  // State for Case Study
+  const [caseStudyProject, setCaseStudyProject] = useState<Project | null>(null);
+  
   // State for Cat Email Popup
   const [showEmailCat, setShowEmailCat] = useState(false);
 
   // Function to switch to project view and select a project
   const handleProjectSelect = (project: Project) => {
     setSelectedProject(project);
+  };
+
+  // Function to open case study
+  const handleOpenCaseStudy = (project: Project) => {
+    setSelectedProject(null); // Close modal
+    setCaseStudyProject(project);
+    setActiveTab('case-study');
+  };
+
+  // Function to handle back from case study
+  const handleBackFromCaseStudy = () => {
+    setCaseStudyProject(null);
+    setActiveTab('project'); // Return to project list
   };
 
   return (
@@ -47,10 +65,13 @@ export default function App() {
           />
         )}
         {activeTab === 'resume' && <ResumeView />}
+        {activeTab === 'case-study' && caseStudyProject && (
+          <CaseStudyView project={caseStudyProject} onBack={handleBackFromCaseStudy} />
+        )}
       </main>
 
       {/* Footer */}
-      {activeTab !== 'resume' && (
+      {activeTab !== 'resume' && activeTab !== 'case-study' && (
         <footer className="bg-gradient-to-b from-black to-gray-900 pt-20 pb-10 px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
              <IcebreakerGenerator />
@@ -105,7 +126,11 @@ export default function App() {
       )}
 
       <ChatWidget />
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+        onOpenCaseStudy={handleOpenCaseStudy}
+      />
       <ImageLightbox image={selectedImage} onClose={() => setSelectedImage(null)} />
     </div>
   );

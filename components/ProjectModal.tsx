@@ -1,13 +1,48 @@
-import React from 'react';
-import { X, Sparkles, Globe, Github } from 'lucide-react';
+
+import React, { useEffect } from 'react';
+import { X, Sparkles, Globe, Github, LayoutTemplate } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
+  onOpenCaseStudy?: (project: Project) => void;
 }
 
-const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+// Memoized Iframe component to prevent re-renders causing video reload/stutter
+const VideoEmbed = React.memo(({ src }: { src: string }) => (
+  <div className="mb-8 flex justify-center bg-black/30 rounded-xl p-4 border border-white/5 transform-gpu">
+    <iframe 
+      src={src} 
+      width="500" 
+      height="500" 
+      style={{border:'none', maxWidth: '100%'}} 
+      scrolling="yes"
+      frameBorder="0" 
+      allowFullScreen={true} 
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      className="rounded-lg shadow-lg"
+      title="Project Video"
+      loading="lazy"
+    ></iframe>
+  </div>
+));
+
+VideoEmbed.displayName = 'VideoEmbed';
+
+const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onOpenCaseStudy }) => {
+  
+  // Effect to trigger Facebook XFBML parsing when a FB video is present
+  useEffect(() => {
+    if (project?.facebookVideoUrl && (window as any).FB) {
+      try {
+        (window as any).FB.XFBML.parse();
+      } catch (e) {
+        console.error("FB Parse error", e);
+      }
+    }
+  }, [project]);
+
   if (!project) return null;
 
   return (
@@ -19,8 +54,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
         >
           <X className="w-5 h-5" />
         </button>
-        <div className="h-64 overflow-hidden relative flex-shrink-0">
-          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        <div className="h-64 overflow-hidden relative flex-shrink-0 bg-black">
+          <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent"></div>
           <div className="absolute bottom-4 left-6">
              <span className="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full mb-2 inline-block">{project.category}</span>
@@ -28,7 +63,22 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
           </div>
         </div>
         <div className="p-8 overflow-y-auto">
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
+          
+          {/* Facebook Video SDK Implementation */}
+          {project.facebookVideoUrl ? (
+             <div className="mb-8 flex justify-center bg-black/30 rounded-xl p-4 border border-white/5 min-h-[300px] items-center">
+               <div 
+                 className="fb-video" 
+                 data-href={project.facebookVideoUrl} 
+                 data-width="500" 
+                 data-show-text="false"
+               ></div>
+             </div>
+          ) : project.embedUrl ? (
+             <VideoEmbed src={project.embedUrl} />
+          ) : null}
+          
+          <p className="text-gray-300 text-lg leading-relaxed mb-6 whitespace-pre-wrap">
             {project.fullDescription}
           </p>
           <div className="mb-8">
@@ -44,12 +94,37 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             </div>
           </div>
           <div className="flex gap-4">
-             <button className="flex-1 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
-               <Globe className="w-4 h-4" /> Live Demo
-             </button>
-             <button className="flex-1 py-3 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-               <Github className="w-4 h-4" /> View Code
-             </button>
+             {project.hasCaseStudy ? (
+                 <button
+                   onClick={() => onOpenCaseStudy && onOpenCaseStudy(project)}
+                   className="flex-1 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                 >
+                   <LayoutTemplate className="w-4 h-4" />
+                   View Project
+                 </button>
+             ) : project.type !== '平面設計' ? (
+                 project.link ? (
+                   <a 
+                     href={project.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex-1 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                   >
+                     <Globe className="w-4 h-4" />
+                     {project.type === '影音' ? 'Watch Video' : 'View Project'}
+                   </a>
+                 ) : (
+                   <button className="flex-1 py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+                     <Globe className="w-4 h-4" /> Live Demo
+                   </button>
+                 )
+             ) : null}
+             
+             {project.type !== '影音' && project.type !== '平面設計' && (
+               <button className="flex-1 py-3 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+                 <Github className="w-4 h-4" /> View Code
+               </button>
+             )}
           </div>
         </div>
       </div>
