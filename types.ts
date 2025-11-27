@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
 export interface Socials {
-  twitter: string;
-  linkedin: string;
-  instagram: string;
-  behance: string;
+  twitter?: string;
+  linkedin?: string;
+  instagram?: string;
+  behance?: string;
 }
 
 export interface PersonalInfo {

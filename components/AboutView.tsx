@@ -1,13 +1,14 @@
+
 import React from 'react';
-import { ArrowRight, Maximize2 } from 'lucide-react';
-import { PERSONAL_INFO, GALLERY_IMAGES } from '../constants';
+import { ArrowRight } from 'lucide-react';
+import { PERSONAL_INFO } from '../constants';
 import AnimationWrapper from './AnimationWrapper';
 
 interface AboutViewProps {
   setSelectedImage: (img: string) => void;
 }
 
-const AboutView: React.FC<AboutViewProps> = ({ setSelectedImage }) => (
+const AboutView: React.FC<AboutViewProps> = () => (
   <div className="pt-32 pb-16 px-6 max-w-5xl mx-auto min-h-screen">
     <AnimationWrapper>
       <h2 className="text-5xl font-bold text-white mb-12 flex items-center gap-4">
@@ -19,7 +20,7 @@ const AboutView: React.FC<AboutViewProps> = ({ setSelectedImage }) => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
       <div className="md:col-span-2 space-y-8 text-gray-300 text-lg leading-relaxed">
         <AnimationWrapper delay={100}>
-           <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-purple-500 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+           <p className="whitespace-pre-wrap first-letter:text-5xl first-letter:font-bold first-letter:text-purple-500 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
              {PERSONAL_INFO.longBio}
            </p>
         </AnimationWrapper>
@@ -65,24 +66,6 @@ const AboutView: React.FC<AboutViewProps> = ({ setSelectedImage }) => (
         </div>
       </AnimationWrapper>
     </div>
-
-    <AnimationWrapper delay={500}>
-      <h3 className="text-3xl font-bold text-white mb-8">Visual Playground</h3>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-         {GALLERY_IMAGES.map((img, idx) => (
-           <div 
-            key={idx} 
-            onClick={() => setSelectedImage(img)}
-            className={`rounded-3xl overflow-hidden border border-white/10 relative group cursor-zoom-in hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:z-10 transition-all duration-500 ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
-           >
-             <img src={img} alt="Gallery" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                <Maximize2 className="text-white drop-shadow-lg w-8 h-8 transform scale-50 group-hover:scale-100 transition-transform duration-300" />
-             </div>
-           </div>
-         ))}
-      </div>
-    </AnimationWrapper>
   </div>
 );
 

@@ -19,10 +19,8 @@ export const PERSONAL_INFO: PersonalInfo = {
   name: "Pinchiao Lin",
   role: "Product Designer",
   bio: "專注於打造富有表現力且引人入勝的數位體驗。協助新創公司與企業將創意轉化為以使用者為核心的解決方案。",
-  longBio: "你好！我是 Pinchiao。擁有三年以上的設計經驗，我熱衷於探索設計與科技的交會點。我曾在不同規模的團隊中工作，從初創公司到大型企業，這讓我學會了如何在美學與商業目標之間取得平衡。閒暇之餘，我喜歡動漫、攝影以及研究最新的互動科技。",
+  longBio: "你好！我是 Pinchiao，一位熱愛探索設計邊界的產品設計師。擁有三年以上的實戰經驗，我擅長將複雜的商業需求轉化為直觀且富有美感的用戶體驗。\n\n我的設計旅程橫跨了快節奏的新創公司與制度嚴謹的大型企業。在福維克 (Vorwerk) 的行銷團隊中，我負責大型活動的視覺統籌與執行，學會了如何在跨部門協作中精準傳遞品牌價值；而在藝高文創的經歷，則磨練了我對視覺細節的極致追求與平面設計的深厚功底。\n\n我堅信好的設計不僅是視覺上的享受，更是解決問題的優雅方案。我喜歡深入挖掘使用者的真實需求，並運用數據驅動的思維來優化每一個互動環節。除了設計專業，我也熱衷於研究 AI 工具（如 ChatGPT、Gemini）在設計流程中的應用，致力於提升工作效率並探索更多創意的可能性。\n\n閒暇之餘，我是一個動漫愛好者與攝影迷，這些興趣不僅豐富了我的生活，也成為我創作靈感的泉源。我隨時準備好迎接新的挑戰，期待能與更多優秀的團隊合作，共同創造出令人驚艷的產品。",
   tags: [
-    "UX Research", 
-    "UI Design", 
     "Prototyping", 
     "Adobe Illustrator", 
     "Adobe Photoshop", 
@@ -34,27 +32,37 @@ export const PERSONAL_INFO: PersonalInfo = {
     "Anime Lover 🍜", 
     "Tech Enthusiast 💻"
   ],
-  email: "your.email@example.com",
+  email: "pinchiaolin@gmail.com",
   location: "Taiwan",
   socials: {
-    twitter: "#",
-    linkedin: "#",
-    instagram: "#",
-    behance: "#"
+    linkedin: "https://www.linkedin.com/in/pinchiao-lin-b92458243",
+    instagram: "https://www.instagram.com/pin_lin03/"
   }
 };
 
 export const PROFILE_IMAGE = "https://images.plurk.com/16c6yr1De5nCExqmQPkROr.jpg";
 
 export const SKILLS: Skill[] = [
-  { name: "Adobe Illustrator", icon: <PenTool className="w-6 h-6" />, color: "text-orange-500" },
-  { name: "Adobe Photoshop", icon: <ImageIcon className="w-6 h-6" />, color: "text-blue-500" },
-  { name: "Adobe Premiere", icon: <Video className="w-6 h-6" />, color: "text-purple-500" },
-  { name: "Adobe After Effects", icon: <Zap className="w-6 h-6" />, color: "text-indigo-500" },
+  { name: "Illustrator", icon: <PenTool className="w-6 h-6" />, color: "text-orange-500" },
+  { name: "Photoshop", icon: <ImageIcon className="w-6 h-6" />, color: "text-blue-500" },
+  { name: "Premiere", icon: <Video className="w-6 h-6" />, color: "text-purple-500" },
+  { name: "After Effects", icon: <Zap className="w-6 h-6" />, color: "text-indigo-500" },
   { name: "Figma", icon: <Layout className="w-6 h-6" />, color: "text-red-400" },
   { name: "ChatGPT", icon: <Bot className="w-6 h-6" />, color: "text-green-400" },
   { name: "Gemini", icon: <Sparkles className="w-6 h-6" />, color: "text-blue-400" },
+  { name: "Canva", icon: <Palette className="w-6 h-6" />, color: "text-cyan-500" },
 ];
+
+// New constants for the specific Resume Layout
+export const RESUME_LANGUAGES = [
+  { language: "Taiwanese Mandarin", level: "Native", flag: "🇹🇼" },
+  { language: "English", level: "Professional working", flag: "🇬🇧" }
+];
+
+export const RESUME_SPECIFIC_SKILLS = {
+  design: ["Graphic Design", "Exhibition Design", "Print Design"],
+  video: ["Video Editing", "Motion Graphics", "Storyboard", "Script Writing"]
+};
 
 export const PROJECTS: Project[] = [
   {
@@ -378,11 +386,4 @@ export const TESTIMONIALS: Testimonial[] = [
     text: "與 Pinchiao 合作非常愉快，她的設計不僅美觀，更重要的是非常符合使用者體驗。",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2187&auto=format&fit=crop"
   }
-];
-
-export const GALLERY_IMAGES: string[] = [
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2340&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2164&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop",
 ];
