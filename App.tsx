@@ -9,8 +9,6 @@ import ResumeView from './components/ResumeView';
 import CaseStudyView from './components/CaseStudyView';
 import ProjectModal from './components/ProjectModal';
 import ImageLightbox from './components/ImageLightbox';
-import ChatWidget from './components/ChatWidget';
-import IcebreakerGenerator from './components/IcebreakerGenerator';
 import { PERSONAL_INFO } from './constants';
 import { Project } from './types';
 
@@ -74,7 +72,6 @@ export default function App() {
       {activeTab !== 'resume' && activeTab !== 'case-study' && (
         <footer className="bg-gradient-to-b from-black to-gray-900 pt-20 pb-10 px-6 border-t border-white/10">
           <div className="max-w-4xl mx-auto text-center">
-             <IcebreakerGenerator />
              
              {/* Cat Button Section */}
              <div className="mt-16 flex flex-col items-center relative z-10">
@@ -125,7 +122,6 @@ export default function App() {
         </footer>
       )}
 
-      <ChatWidget />
       <ProjectModal 
         project={selectedProject} 
         onClose={() => setSelectedProject(null)} 

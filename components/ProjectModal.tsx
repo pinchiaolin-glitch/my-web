@@ -102,7 +102,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onOpenCas
                    <LayoutTemplate className="w-4 h-4" />
                    View Project
                  </button>
-             ) : project.type !== '平面設計' ? (
+             ) : project.type !== '平面設計' && project.type !== '活動企劃' ? (
                  project.link ? (
                    <a 
                      href={project.link}
@@ -120,7 +120,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onOpenCas
                  )
              ) : null}
              
-             {project.type !== '影音' && project.type !== '平面設計' && (
+             {project.type !== '影音' && project.type !== '平面設計' && project.type !== '活動企劃' && (
                <button className="flex-1 py-3 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
                  <Github className="w-4 h-4" /> View Code
                </button>

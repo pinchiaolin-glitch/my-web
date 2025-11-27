@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
     description: "負責春酒最核心的頒獎環節，統籌 30+ 個獎項的物資排序與人員核對。",
     fullDescription: "舞台執行 / 舞台助理 (Stage Executive / Stage Assistant)\n\n負責春酒最核心的頒獎環節，統籌 30+ 個獎項的物資排序與人員核對。\n\n【關鍵職責 Key Responsibilities】\n• 頒獎統籌：管理 30+ 個獎項物資與人員核對，確保流程順暢。\n• 動線引導：引導長官與得獎者之舞台動線，協助調整合照站位，確保畫面構圖專業。\n• 現場控管：與主持人及後台場控密切配合，精準掌控頒獎節奏，達成活動零失誤。",
     stack: ["Stage Management", "Event Execution", "Coordination"],
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2340&auto=format&fit=crop",
+    image: "https://images.plurk.com/3UdbI66wDe97SssOY9Xfaw.png",
     icon: <Sparkles className="w-6 h-6" />,
     link: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7320678047563579393",
     embedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7320678047563579393?compact=1"
